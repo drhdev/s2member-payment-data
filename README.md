@@ -1,4 +1,4 @@
-# s2member-payment-data Python Script
+# s2member-payment-data Python Scripts
 
 A bunch of small Python scripts allowing you to extract and post process the data from the Transactional Payments Emails created by the WordPress plugin S2member.  
 
