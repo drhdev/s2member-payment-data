@@ -1,9 +1,9 @@
-# s2member-payment-data
+# s2member-payment-data Python Script
 
 A bunch of Python scripts allowing to extract and post process the data from the Transactional Payments Emails created by the WordPress plugin S2member.  
 
 
-## s2member-email2csv
+## s2member-email2csv.py
 
 Python script to extract the fields from an S2Member transaction Email regarding payments from Paypal and store them in a local output.csv for further use.
 
