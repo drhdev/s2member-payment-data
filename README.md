@@ -50,15 +50,19 @@ Example:
 - Make sure each script is executable: chmod +x /path/to/script.py
 - Add entry for each script with short delays to start with the first one at 7:15 each morning and creating a log for each script:
  
-# Script 1
+### Script 1
 15 7 * * * source /path/to/venv/bin/activate && python /path/to/script1.py >> /path/to/script1.log 2>&1
 
-# Script 2
+### Script 2
 17 7 * * * source /path/to/venv/bin/activate && python /path/to/script2.py >> /path/to/script2.log 2>&1
 
-# Script 3
+### Script 3
 19 7 * * * source /path/to/venv/bin/activate && python /path/to/script3.py >> /path/to/script3.log 2>&1
 
 To find out the path path to your Python virtual environment use: which python when virtual env is active.
 
+
+## Todos
+
+- Delete emails that have been processed after xx days in s2email2csv.py 
 
