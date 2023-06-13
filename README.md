@@ -7,6 +7,7 @@ They play nicely together and with all three scripts you can get a Telegram noti
 1. Install dependencies with pip install -r requirements.txt
 
 2. Rename env.txt to .env and fill in your Email Server's credentials and Telegram Bot Token and Chat ID.
+   
 
 ## s2email2csv.py
 
@@ -47,11 +48,17 @@ Example:
 
 - On your command line run crontab -e
 - Make sure each script is executable: chmod +x /path/to/script.py
-- Add entry for each script with short delays to start with the first one at 7:15 each morning:
-     15 7 * * * python /path/to/s2email2csv.py
-     17 7 * * * python /path/to/s2yesterdaysmessage.py
-     19 7 * * * python /path/to/s2ymsgtelegram.py
-   
+- Add entry for each script with short delays to start with the first one at 7:15 each morning and creating a log for each script:
+ 
+# Script 1
+15 7 * * * source /path/to/venv/bin/activate && python /path/to/script1.py >> /path/to/script1.log 2>&1
 
+# Script 2
+17 7 * * * source /path/to/venv/bin/activate && python /path/to/script2.py >> /path/to/script2.log 2>&1
+
+# Script 3
+19 7 * * * source /path/to/venv/bin/activate && python /path/to/script3.py >> /path/to/script3.log 2>&1
+
+To find out the path path to your Python virtual environment use: which python when virtual env is active.
 
 
