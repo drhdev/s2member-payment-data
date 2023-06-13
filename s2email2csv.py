@@ -160,6 +160,11 @@ if processed_emails:
 
     with open(output_file, 'a', newline='') as file:
         writer = csv.DictWriter(file, fieldnames=list(processed_emails[0].keys()))
+
+        # Format the "email_date" values before writing to the CSV file
+        for email_data in processed_emails:
+            email_data['email_date'] = parse(email_data['email_date']).strftime('%a, %d %b %Y')
+
         writer.writerows(processed_emails)
 
 # Close IMAP connection
