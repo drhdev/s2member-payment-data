@@ -48,16 +48,10 @@ Example:
 
 - On your command line run crontab -e
 - Make sure each script is executable: chmod +x /path/to/script.py
-- Add entry for each script with short delays to start with the first one at 7:15 each morning and creating a log for each script:
+- Add entry for each script with short delays to start with the first one at 19:35 each each evening and creating a log for each script:
  
-### Script 1
-15 7 * * * source /path/to/venv/bin/activate && python /path/to/script1.py >> /path/to/script1.log 2>&1
-
-### Script 2
-17 7 * * * source /path/to/venv/bin/activate && python /path/to/script2.py >> /path/to/script2.log 2>&1
-
-### Script 3
-19 7 * * * source /path/to/venv/bin/activate && python /path/to/script3.py >> /path/to/script3.log 2>&1
+### Example Entry crontab
+35 19 * * * cd /home/usr/projects/s2payments && /home/usr/projects/s2payments/env/bin/python3 /home/usr/projects/s2payments/s2member-payment-data/s2email2csv.py
 
 To find out the path path to your Python virtual environment use: which python when virtual env is active.
 
