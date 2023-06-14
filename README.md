@@ -51,7 +51,7 @@ Example:
 - Add entry for each script with short delays to start with the first one at 19:35 each each evening and creating a log for each script:
  
 ### Example Entry crontab
-35 19 * * * cd /home/usr/projects/s2payments && /home/usr/projects/s2payments/env/bin/python3 /home/usr/projects/s2payments/s2member-payment-data/s2email2csv.py
+35 19 * * * cd /home/usr/projects/s2payments/s2member-payment-data/ && /home/usr/projects/s2payments/env/bin/python3 /home/usr/projects/s2payments/s2member-payment-data/s2email2csv.py
 
 To find out the path path to your Python virtual environment use: which python when virtual env is active.
 
