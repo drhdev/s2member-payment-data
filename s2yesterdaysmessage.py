@@ -15,8 +15,11 @@ def process_previous_day_data(output_file):
         # Read the output.csv file into a DataFrame
         df = pd.read_csv(output_file)
 
-        # Filter the DataFrame for entries from the previous day
-        df_previous_day = df[df['email_date'].str.contains(previous_day_date)]
+        # Convert the 'email_date' column to datetime format
+        df['email_date'] = pd.to_datetime(df['email_date'], format='%a, %d %b %Y', errors='coerce')
+
+        # Filter the DataFrame for entries from the previous day using only the date part
+        df_previous_day = df[df['email_date'].dt.strftime('%a, %d %b %Y') == previous_day_date]
 
         # Calculate the total number of transactions and income from the previous day
         previous_day_transactions = df_previous_day.shape[0]
