@@ -86,6 +86,22 @@ def extract_variables_from_email(email_body):
 
     return variables
 
+def move_old_emails_to_trash(imap):
+    # Get the current date
+    current_date = datetime.datetime.now()
+    # Calculate the date 1 week ago
+    one_week_ago = (current_date - datetime.timedelta(days=7)).strftime('%d-%b-%Y')
+    # Search for emails older than 1 week
+    status, email_ids = imap.search(None, f'(BEFORE {one_week_ago})')
+    if status != 'OK':
+        print("No emails found to move to trash.")
+        return
+    # Move the emails to the trash folder
+    for email_id in email_ids[0].split():
+        imap.store(email_id, '+FLAGS', '\\Deleted')
+    imap.expunge()
+    print("Moved old emails to trash.")
+
 # IMAP settings
 imap_host = os.getenv('IMAP_HOST')
 imap_user = os.getenv('IMAP_USER')
@@ -103,6 +119,9 @@ output_file = 'output.csv'
 imap = imaplib.IMAP4_SSL(imap_host)
 imap.login(imap_user, imap_password)
 imap.select(inbox_folder)
+
+# Move old emails to trash
+move_old_emails_to_trash(imap)
 
 # Search for emails based on filters
 search_criteria = []
